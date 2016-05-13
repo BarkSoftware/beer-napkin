@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UI Mockups for Github">
+    <meta name="author" content="Bark Software">
+
+    <title>Beer Napkin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+      WebFont.load({
+        google: {
+          families: ['Amatic+SC:400,700:latin,latin-ext']
+        }
+      });
+    </script>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <div id="navbar" class="navbar navbar-default navbar-static-top">
+        <a href="/"><img id="logo" src="<%= static_path(@conn, "/images/logo.png") %>" alt="Beer Napkin Logo" /></a>
+        <a href="/napkins/new" class='btn btn-primary btn-lg' id='new-napkin'>
+          <i class="fa fa-plus"></i> New Napkin
+        </a>
+        <div id="user" class="pull-right">
+        </div>
+        <div id="editor-buttons" class="btn-group pull-right">
+          <button title="undo" class="btn btn-default" type="button" id="undo"><i class="fa fa-undo"></i></button>
+          <button title="redo" class="btn btn-default" type="button" id="redo"><i class="fa fa-rotate-right"></i></button>
+          <button title="duplicate" class="btn btn-default" type="button" id="duplicate-object"><i class="fa fa-copy"></i></button>
+          <button title="send to back" class="btn btn-default" type="button" id="send-to-back"><i class="fa fa-level-down"></i></button>
+          <button title="bring to front" class="btn btn-default" type="button" id="bring-to-front"><i class="fa fa-level-up"></i></button>
+          <button title="remove object" class="btn btn-default" type="button" id="remove-active-object"><i class="fa fa-trash"></i></button>
+        </div>
+    </div>
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+    <%= render @view_module, @view_template, assigns %>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

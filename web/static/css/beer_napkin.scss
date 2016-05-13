@@ -1,0 +1,99 @@
+$border-color: #ccc;
+
+/* hide dropzone preview for now */
+.dz-preview { display: none; }
+
+#navbar {
+  padding: 5px;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 0px;
+  #user-control {
+    border-radius: 5px;
+    background-color: #555;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 5px;
+  }
+  #user-control:hover {
+    cursor: pointer;
+    background-color: #333;
+  }
+  #user {
+    margin-top: 8px;
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  #logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  #editor-buttons {
+    margin-top: 8px;
+    margin-right: 15px;
+  }
+}
+
+#bottom-menu {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+#beer-napkin {
+  border-left: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+}
+
+#bar {
+  #menu {
+    overflow-y: auto;
+    height: 500px;
+    .help-block {
+      font-size: 10px;
+      padding-left: 5px;
+      padding-right: 5px;
+      text-align: center;
+    }
+    float: left;
+    width: 200px;
+    .asset {
+      padding: 5px 25px;
+      h5 {
+        font-family: 'Amatic SC';
+        text-align: center;
+      }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 150px;
+      }
+    }
+    .asset:hover {
+      cursor: pointer;
+      background-color: #ccc;
+    }
+  }
+
+  #beer-menu {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+
+  #napkin {
+    float: left;
+  }
+
+  #bottle {
+    padding: 5px;
+    float: left;
+    width: 200px;
+    display: none;
+  }
+}

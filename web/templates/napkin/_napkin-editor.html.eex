@@ -1,0 +1,27 @@
+<div id="bar" class="clearfix">
+  <div id="menu"></div>
+  <div id="bottle"></div>
+  <div id="napkin"></div>
+</div>
+<div id="bottom-menu">
+  <%= form_for @changeset, @action, [id: "save-form"], fn(f) -> %>
+    <%= f.hidden_field :json %>
+    <button id='save-button' class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Save</button>
+  <% end %>
+</div>
+<script type='text/javascript'>
+  $(function() {
+    var json = $('input#napkin_json').val();
+    var table = new beer.Table("#bar", { json: json });
+    var form = $("#save-form");
+    form.submit(function() {
+      var table = $('#bar').data('table');
+      table.napkin.canvas.deactivateAll();
+      var json = JSON.stringify(table.napkin.canvas);
+      var image_data = table.napkin.canvas.toDataURL('png');
+      form.find('input#napkin_json').val(json);
+      form.find('input#napkin_image').val(image_data);
+    });
+  });
+</script>
+

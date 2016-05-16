@@ -1,17 +1,16 @@
-defmodule BeerNapkin.User do
+defmodule BeerNapkin.Napkin do
   use BeerNapkin.Web, :model
 
-  schema "users" do
-    field :username, :string
-    field :email, :string
+  schema "napkins" do
+    field :json, :string
     field :token, :string
-    field :image, :string
+    belongs_to :user, BeerNapkin.User
 
     timestamps
   end
 
-  @required_fields ~w(username email image)
-  @optional_fields ~w(token)
+  @required_fields ~w(json token)
+  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.

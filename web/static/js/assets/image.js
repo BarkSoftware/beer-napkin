@@ -1,5 +1,5 @@
 (function(){
-  var defaultImageUrl = "<%= asset_url('placeholder.png') %>";
+  var defaultImageUrl = "/images/placeholder.png";
 
   fabric.BeerImage = beer.util.createClass(fabric.Group, {
     type: 'beerImage',

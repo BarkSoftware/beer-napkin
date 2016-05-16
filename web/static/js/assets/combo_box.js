@@ -5,7 +5,7 @@
       this.bottle = beer.table.bottle;
       this.svg = _.first(objects)
       this.callSuper('initialize', objects, object);
-      var svgUrl = '/beer-assets/combo-box.svg';
+      var svgUrl = '/images/combo-box.svg';
 
       if (!this.svg) {
         fabric.loadSVGFromURL(svgUrl, _.bind(function(objects) {
@@ -52,7 +52,7 @@
     order: 1,
     Shape: fabric.BeerComboBox,
     name: 'combo-box',
-    menuImage: '/beer-assets/combo-box.svg',
+    menuImage: '/images/combo-box.svg',
     createShape: function(bottle, napkin, done) {
       done(new fabric.BeerComboBox([], {  fill: beer.options.stroke_color }));
     }

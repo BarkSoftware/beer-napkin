@@ -81,6 +81,6 @@
     order: 1,
     Shape: fabric.BeerButton,
     name: 'button',
-    svgUrl: '/beer-assets/button2.svg',
+    svgUrl: '/images/button2.svg',
   }));
 })();

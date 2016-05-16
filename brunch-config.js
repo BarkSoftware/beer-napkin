@@ -2,7 +2,7 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: "js/app.js"
+      joinTo: "js/app.js",
 
       // To use a separate vendor.js bundle, specify two files path
       // https://github.com/brunch/brunch/blob/stable/docs/config.md#files
@@ -13,13 +13,30 @@ exports.config = {
       //
       // To change the order of concatenation of files, explicitly mention here
       // https://github.com/brunch/brunch/tree/master/docs#concatenation
-       order: {
+      order: {
          before: [
-           "web/static/vendor/bind.min.js",
-           "web/static/beer.js",
-           "web/static/util.js"
+           "web/static/js/vendor/bind.min.js",
+           "web/static/js/beer.js",
+           "web/static/js/util.js",
+           "web/static/js/layering.js",
+           "web/static/js/undo_redo.js",
+           "web/static/js/common_asset_events.js",
+           "web/static/js/napkin.js",
+           "web/static/js/bottle.js",
+           "web/static/js/menu.js",
+           "web/static/js/table.js",
+           "web/static/js/asset.js",
+           "web/static/js/assets/button.js",
+           "web/static/js/assets/checkbox.js",
+           "web/static/js/assets/circle.js",
+           "web/static/js/assets/combo_box.js",
+           "web/static/js/assets/image.js",
+           "web/static/js/assets/paragraph.js",
+           "web/static/js/assets/radio.js",
+           "web/static/js/assets/rectangle.js",
+           "web/static/js/assets/text_input.js",
          ]
-       }
+      }
     },
     stylesheets: {
       joinTo: "css/app.css"

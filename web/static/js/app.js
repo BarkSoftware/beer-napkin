@@ -11,6 +11,7 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
+
 import "phoenix_html"
 
 // Import local files
@@ -19,3 +20,28 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+window.beer = require("./beer")
+var modules = [
+  "util",
+  "table",
+  "menu",
+  "napkin",
+  "bottle",
+  "undo_redo",
+  "layering",
+  "asset",
+  "common_asset_events",
+  "assets/button",
+  "assets/checkbox",
+  "assets/circle",
+  "assets/combo_box",
+  "assets/image",
+  "assets/paragraph",
+  "assets/radio",
+  "assets/rectangle",
+  "assets/text_input",
+];
+_.each(modules, function(m) {
+  require("./" + m)
+});

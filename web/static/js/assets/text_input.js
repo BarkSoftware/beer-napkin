@@ -5,7 +5,7 @@
       this.bottle = beer.table.bottle;
       this.svg = _.first(objects)
       this.callSuper('initialize', objects, object);
-      var svgUrl = '/beer-assets/text-input.svg';
+      var svgUrl = '/images/text-input.svg';
 
       if (!this.svg) {
         fabric.loadSVGFromURL(svgUrl, _.bind(function(objects) {
@@ -52,7 +52,7 @@
     order: 1,
     Shape: fabric.BeerTextInput,
     name: 'text-input',
-    menuImage: '/beer-assets/text-input.svg',
+    menuImage: '/images/text-input.svg',
     createShape: function(bottle, napkin, done) {
       done(new fabric.BeerTextInput([], {  fill: beer.options.stroke_color }));
     }

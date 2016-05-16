@@ -4,8 +4,8 @@
   <div id="napkin"></div>
 </div>
 <div id="bottom-menu">
-  <%= form_for @changeset, @action, [id: "save-form"], fn(f) -> %>
-    <%= f.hidden_field :json %>
+  <%= form_for @changeset, @action, [id: "save-form"], fn f -> %>
+    <%= hidden_input f, :json %>
     <button id='save-button' class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Save</button>
   <% end %>
 </div>
@@ -18,9 +18,9 @@
       var table = $('#bar').data('table');
       table.napkin.canvas.deactivateAll();
       var json = JSON.stringify(table.napkin.canvas);
-      var image_data = table.napkin.canvas.toDataURL('png');
+      <%#var image_data = table.napkin.canvas.toDataURL('png');%>
       form.find('input#napkin_json').val(json);
-      form.find('input#napkin_image').val(image_data);
+      <%#form.find('input#napkin_image').val(image_data);%>
     });
   });
 </script>

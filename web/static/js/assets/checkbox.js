@@ -25,7 +25,7 @@
     },
     setChecked: function(value) {
       this.model.checked = value;
-      var svgUrl = '/beer-assets/checkbox-' + value + '.svg';
+      var svgUrl = '/images/checkbox-' + value + '.svg';
 
       fabric.loadSVGFromURL(svgUrl, _.bind(function(objects) {
         var group = new fabric.Group(objects);
@@ -69,7 +69,7 @@
     order: 1,
     Shape: fabric.BeerCheckbox,
     name: 'checkbox',
-    menuImage: '/beer-assets/checkbox-checked.svg',
+    menuImage: '/images/checkbox-checked.svg',
     menuImageWidth: 30,
     createShape: function(bottle, napkin, done) {
       done(new fabric.BeerCheckbox([], {  fill: beer.options.stroke_color }));

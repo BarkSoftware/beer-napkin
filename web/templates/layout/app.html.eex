@@ -24,6 +24,7 @@
         }
       });
     </script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -66,6 +67,5 @@
     <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
     <%= render @view_module, @view_template, assigns %>
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

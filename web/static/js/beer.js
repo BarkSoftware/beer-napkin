@@ -1,9 +1,9 @@
 var beer = beer || {
-  version: "<%= Settings.client_version %>",
+  version: "0.0.1",
   assets: [],
   options: {
     stroke_color: '#001966',
-    background: { source: "<%= asset_url('napkin.png') %>", repeat: 'repeat' },
+    background: { source: "/images/napkin.png", repeat: 'repeat' },
     fontFamily: 'Amatic SC',
     menu: {
       width: 200,
@@ -19,3 +19,4 @@ var beer = beer || {
     }
   }
 };
+module.exports = beer;

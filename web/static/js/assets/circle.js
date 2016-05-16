@@ -5,7 +5,7 @@
       this.bottle = beer.table.bottle;
       this.svg = _.first(objects)
       this.callSuper('initialize', objects, object);
-      var svgUrl = '/beer-assets/circle.svg';
+      var svgUrl = '/images/circle.svg';
 
       if (!this.svg) {
         fabric.loadSVGFromURL(svgUrl, _.bind(function(objects) {
@@ -52,7 +52,7 @@
     order: 1,
     Shape: fabric.BeerCircle,
     name: 'circle',
-    menuImage: '/beer-assets/circle.svg',
+    menuImage: '/images/circle.svg',
     menuImageWidth: 40,
     createShape: function(bottle, napkin, done) {
       done(new fabric.BeerCircle([], {  fill: beer.options.stroke_color }));

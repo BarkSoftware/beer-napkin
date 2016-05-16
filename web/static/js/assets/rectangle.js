@@ -5,7 +5,7 @@
       this.bottle = beer.table.bottle;
       this.svg = _.first(objects)
       this.callSuper('initialize', objects, object);
-      var svgUrl = '/beer-assets/rectangle.svg';
+      var svgUrl = '/images/rectangle.svg';
 
       if (!this.svg) {
         fabric.loadSVGFromURL(svgUrl, _.bind(function(objects) {
@@ -52,7 +52,7 @@
     order: 1,
     Shape: fabric.BeerRectangle,
     name: 'rectangle',
-    menuImage: '/beer-assets/rectangle.svg',
+    menuImage: '/images/rectangle.svg',
     createShape: function(bottle, napkin, done) {
       done(new fabric.BeerRectangle([], {  fill: beer.options.stroke_color }));
     }

@@ -25,7 +25,7 @@
     },
     setChecked: function(value) {
       this.model.checked = value;
-      var svgUrl = '/beer-assets/radio-' + value + '.svg';
+      var svgUrl = '/images/radio-' + value + '.svg';
 
       fabric.loadSVGFromURL(svgUrl, _.bind(function(objects) {
         var group = new fabric.Group(objects);
@@ -69,7 +69,7 @@
     order: 1,
     Shape: fabric.BeerRadio,
     name: 'radio',
-    menuImage: '/beer-assets/radio-checked.svg',
+    menuImage: '/images/radio-checked.svg',
     menuImageWidth: 30,
     createShape: function(bottle, napkin, done) {
       done(new fabric.BeerRadio([], {  fill: beer.options.stroke_color }));

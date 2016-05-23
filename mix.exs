@@ -38,6 +38,8 @@ defmodule BeerNapkin.Mixfile do
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      {:ueberauth_github, "~> 0.2"},
+     {:aws, "~> 0.0.11"},
+     {:secure_random, "~> 0.2"}
    ]
   end
 

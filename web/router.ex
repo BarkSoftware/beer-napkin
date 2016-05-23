@@ -7,7 +7,7 @@ defmodule BeerNapkin.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug BeerNapkin.UserContext, nil
+    plug BeerNapkin.UserContext, repo: BeerNapkin.Repo
   end
 
   pipeline :api do

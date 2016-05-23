@@ -1,13 +1,13 @@
 defmodule BeerNapkin.UserContext do
   import Plug.Conn
 
-  def init(default), do: default
-
-  def call(conn, assigns) do
-    assign(conn, :current_user, current_user(conn))
+  def init(opts) do
+    Keyword.fetch!(opts, :repo)
   end
 
-  defp current_user(conn) do
-    get_session(conn, :current_user)
+  def call(conn, repo) do
+    user_id = get_session(conn, :current_user)
+    user = user_id && repo.get(BeerNapkin.User, user_id)
+    assign(conn, :current_user, user)
   end
 end

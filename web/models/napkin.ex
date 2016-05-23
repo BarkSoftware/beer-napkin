@@ -9,7 +9,7 @@ defmodule BeerNapkin.Napkin do
     timestamps
   end
 
-  @required_fields ~w(json token)
+  @required_fields ~w(json token user_id)
   @optional_fields ~w()
 
   @doc """

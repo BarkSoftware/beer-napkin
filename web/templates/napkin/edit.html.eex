@@ -1,0 +1,1 @@
+<%= render "_napkin_editor.html", changeset: @changeset, action: napkin_path(@conn, :update, @napkin)  %>

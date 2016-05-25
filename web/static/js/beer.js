@@ -10,7 +10,7 @@ var beer = beer || {
       height: $(window).height() - 80
     },
     napkin: {
-      width: function() { return $(window).width() - 200 },
+      width: function() { return $(window).width() - 217 },
       height: function() { return $(window).height() - 61 },
     },
     bottle: {

@@ -1,4 +1,5 @@
 (function(){
+  var AUTH_TOKEN = $("meta[name=csrf]").attr("content");
   var defaultImageUrl = "/images/placeholder.png";
 
   fabric.BeerImage = beer.util.createClass(fabric.Group, {
@@ -61,9 +62,9 @@
         }, this));
       }, this);
       $(".dropzone").dropzone({
-        url: Routes.uploads_path(),
+        url: "/uploads",
         sending: function(file, xhr, formData) {
-          formData.append("authenticity_token", AUTH_TOKEN);
+          formData.append("_csrf_token", AUTH_TOKEN);
         },
         maxFilesize: 2,
         maxFiles: 1,

@@ -2,7 +2,7 @@ defmodule BeerNapkin.Router do
   use BeerNapkin.Web, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
@@ -19,6 +19,7 @@ defmodule BeerNapkin.Router do
 
     get "/", PageController, :index
     resources "/napkins", NapkinController
+    resources "/uploads", UploadController
   end
 
   scope "/auth", BeerNapkin do

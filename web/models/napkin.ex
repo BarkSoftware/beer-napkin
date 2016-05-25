@@ -4,12 +4,13 @@ defmodule BeerNapkin.Napkin do
   schema "napkins" do
     field :json, :string
     field :token, :string
+    field :image_url, :string
     belongs_to :user, BeerNapkin.User
 
     timestamps
   end
 
-  @required_fields ~w(json token user_id)
+  @required_fields ~w(json token user_id image_url)
   @optional_fields ~w()
 
   @doc """

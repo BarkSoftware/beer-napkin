@@ -18,8 +18,8 @@ defmodule BeerNapkin.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {BeerNapkin, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :ueberauth_github]]
+     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext, :phoenix_ecto, :postgrex,
+      :ueberauth_github, :ex_aws, :httpoison, :timex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,8 +38,11 @@ defmodule BeerNapkin.Mixfile do
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      {:ueberauth_github, "~> 0.2"},
-     {:aws, "~> 0.0.11"},
-     {:secure_random, "~> 0.2"}
+     {:ex_aws, "~> 0.4.10"},
+     {:httpoison, "~> 0.7"},
+     {:poison, "~> 1.2"},
+     {:secure_random, "~> 0.2"},
+     {:timex, "~> 2.1.4"},
    ]
   end
 

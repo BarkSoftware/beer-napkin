@@ -45,3 +45,10 @@ var modules = [
 _.each(modules, function(m) {
   require("./" + m)
 });
+
+// not sure why this is needed to make Phoenix delete links work
+$(function() {
+  $("a[data-submit=parent]").click(function() {
+    $(this).parent().submit();
+  });
+});

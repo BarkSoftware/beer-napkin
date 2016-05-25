@@ -6,3 +6,20 @@
 
 /* Phoenix flash messages */
 .alert:empty { display: none; }
+
+/*enables logout form in dropdown*/
+.dropdown-menu>li>form>a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.dropdown-menu>li>form>a:focus,.dropdown-menu>li>form>a:hover{
+  color:#262626;text-decoration:none;background-color:#f5f5f5
+}
+.dropdown-menu>.active>form>a,.dropdown-menu>.active>form>a:focus,.dropdown-menu>.active>form>a:hover{
+  color:#fff;text-decoration:none;background-color:#337ab7;outline:0
+}

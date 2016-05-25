@@ -70,7 +70,7 @@ defmodule BeerNapkin.NapkinController do
       conn
     else
       conn
-      |> put_flash(:error, "You must be logged in to access Beer Napkin.") |> redirect(to: page_path(conn, :index))
+      |> redirect(to: "/auth/github")
       |> halt()
     end
   end

@@ -44,7 +44,6 @@
               </div>
               <ul class="dropdown-menu">
                 <li>
-                <!--TODO: why doesn't this work without the onclick? -->
                 <%= link(to: auth_path(@conn, :delete), method: :delete) do %>
                   <i class="fa fa-sign-out"></i> Log out
                 <% end %>

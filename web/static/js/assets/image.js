@@ -1,6 +1,6 @@
 (function(){
   var AUTH_TOKEN = $("meta[name=csrf]").attr("content");
-  var defaultImageUrl = "/images/placeholder.png";
+  var defaultImageUrl = "/images/image-placeholder.png";
 
   fabric.BeerImage = beer.util.createClass(fabric.Group, {
     type: 'beerImage',

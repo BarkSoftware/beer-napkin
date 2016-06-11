@@ -23,3 +23,6 @@
 .dropdown-menu>.active>form>a,.dropdown-menu>.active>form>a:focus,.dropdown-menu>.active>form>a:hover{
   color:#fff;text-decoration:none;background-color:#337ab7;outline:0
 }
+
+/* https://github.com/bassjobsen/Bootstrap-3-Typeahead#css */
+.typeahead { z-index: 1051; }

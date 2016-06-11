@@ -15,7 +15,7 @@ defmodule BeerNapkin.S3 do
   def save_file(filename, data) do
     {:ok, date_key} = Date.today |> Timex.format("%Y/%m/%d", :strftime)
     object_key = "napkins/#{date_key}/#{filename}"
-    put_object!("beer-napkin", object_key, data, acl: :public_read)
+    put_object!("beer-napkin", object_key, data, acl: :public_read, content_type: "image/png")
     "https://s3.amazonaws.com/beer-napkin/#{object_key}"
   end
 end

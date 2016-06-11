@@ -1,6 +1,7 @@
 (function() {
   beer.Table = beer.util.createClass({
     initialize: function(selector, options) {
+      var napkinModel = options.napkin;
       beer.table = this;
       this.options = _.merge(beer.options, options);
       this.element = $(selector);
@@ -12,6 +13,7 @@
       beer.menu = this.menu;
       this.undoRedo = new beer.UndoRedo(this);
       this.layering = new beer.Layering(this);
+      this.sharing = new beer.Share(napkinModel);
     }
   });
 })();

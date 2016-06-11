@@ -24,6 +24,7 @@ import "phoenix_html"
 window.beer = require("./beer")
 var modules = [
   "util",
+  "github",
   "table",
   "menu",
   "napkin",
@@ -31,6 +32,7 @@ var modules = [
   "undo_redo",
   "layering",
   "asset",
+  "share",
   "common_asset_events",
   "assets/button",
   "assets/checkbox",

@@ -10,6 +10,7 @@ defmodule BeerNapkin.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases,
+     preferred_cli_env: [espec: :test],
      deps: deps]
   end
 
@@ -43,6 +44,7 @@ defmodule BeerNapkin.Mixfile do
      {:poison, "~> 1.2"},
      {:secure_random, "~> 0.2"},
      {:timex, "~> 2.1.4"},
+     {:espec_phoenix, "~> 0.2.1", only: :test, app: false},
    ]
   end
 

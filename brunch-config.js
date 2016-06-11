@@ -16,10 +16,12 @@ exports.config = {
       order: {
          before: [
            "web/static/js/vendor/bind.min.js",
+           "web/static/js/github.js",
            "web/static/js/beer.js",
            "web/static/js/util.js",
            "web/static/js/layering.js",
            "web/static/js/undo_redo.js",
+           "web/static/js/share.js",
            "web/static/js/common_asset_events.js",
            "web/static/js/napkin.js",
            "web/static/js/bottle.js",

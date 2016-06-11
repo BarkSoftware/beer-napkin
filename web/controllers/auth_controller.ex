@@ -46,8 +46,11 @@ defmodule BeerNapkin.AuthController do
       all_params = Map.put_new(params, :token, token)
       all_params = Map.put_new(all_params, :image, image)
       changeset = User.changeset(%User{}, all_params)
-      {:ok, user} = Repo.insert(changeset)
+      Repo.insert(changeset)
+    else
+      update_params = %{token: token, image: image}
+      changeset = User.changeset(user, update_params)
+      Repo.update(changeset)
     end
-    {:ok, user}
   end
 end

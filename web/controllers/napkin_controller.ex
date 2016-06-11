@@ -19,6 +19,7 @@ defmodule BeerNapkin.NapkinController do
     changeset = Napkin.changeset(%Napkin{}, user_napkin_params)
     case Repo.insert(changeset) do
       {:ok, napkin} ->
+        share(conn, napkin, user_napkin_params)
         conn
         |> put_flash(:info, "Napkin saved successfully.")
         |> redirect(to: napkin_path(conn, :edit, napkin))
@@ -36,10 +37,13 @@ defmodule BeerNapkin.NapkinController do
   def update(conn, %{"id" => id, "napkin" => napkin_params, "napkin_image" => image}) do
     napkin = load_napkin(conn, id)
     image_url = save_image(image, napkin.token)
-    update_params = Map.take(napkin_params, ["json"]) |> Map.merge(%{"image_url" => image_url})
+    update_params = Map.take(napkin_params, [
+      "json", "repository_full_name", "issue_title", "issue_description"
+    ]) |> Map.merge(%{"image_url" => image_url})
     changeset = Napkin.changeset(napkin, update_params)
     case Repo.update(changeset) do
       {:ok, napkin} ->
+        share(conn, napkin, napkin_params)
         conn
         |> put_flash(:info, "Napkin saved successfully.")
         |> redirect(to: napkin_path(conn, :edit, napkin))
@@ -79,5 +83,25 @@ defmodule BeerNapkin.NapkinController do
     normalized = base64_image |> String.split(",") |> List.last
     {:ok, image_data} = Base.decode64(normalized)
     file_url = BeerNapkin.S3.save_file("#{token}.png", image_data)
+  end
+
+  defp share(conn, napkin, napkin_params) do
+    case {napkin_params["issue_title"] || "", napkin.issue_url || ""} do
+      {"", ""} -> napkin_params
+      {title, ""} ->
+        token = conn.assigns.current_user.token
+        issue_url = ShareAsGithubIssue.share(
+          token,
+          napkin.repository_full_name,
+          napkin.image_url,
+          napkin_url(BeerNapkin.Endpoint, :edit, napkin.id),
+          napkin.issue_title,
+          napkin.issue_description || ""
+        )
+        changeset = Napkin.changeset(napkin, %{"issue_url" => issue_url})
+        Repo.update(changeset)
+        napkin_params
+      {title, url} -> napkin_params
+    end
   end
 end

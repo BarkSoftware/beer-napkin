@@ -6,14 +6,34 @@
 <div id="bottom-menu">
   <%= form_for @changeset, @action, [id: "save-form"], fn f -> %>
     <%= hidden_input f, :json %>
+    <%= hidden_input f, :token %>
+    <%= hidden_input f, :image_url %>
+
+    <!-- Share on Github Fields -->
+    <%= hidden_input f, :repository_full_name %>
+    <%= hidden_input f, :issue_title %>
+    <%= hidden_input f, :issue_description %>
+
     <input id="napkin_image" type="hidden" name="napkin_image" />
-    <button id='save-button' class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Save</button>
+    <div class="btn-group">
+      <%= if @shareable do %>
+        <button id='share-button' class="btn btn-default" type="button"><i class="fa fa-share"></i> Share</button>
+      <% end %>
+      <button id='save-button' class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Save</button>
+    </div>
   <% end %>
 </div>
 <script type='text/javascript'>
   $(function() {
-    var json = $('input#napkin_json').val();
-    var table = new beer.Table("#bar", { json: json });
+    var napkin = {
+      token: $('input#napkin_token').val(),
+      image_url: $('input#napkin_image_url').val(),
+      json: $('input#napkin_json').val()
+    }
+    var table = new beer.Table("#bar", {
+      json: napkin.json,
+      napkin: napkin
+    });
     var form = $("#save-form");
     form.submit(function() {
       var table = $('#bar').data('table');
@@ -25,4 +45,3 @@
     });
   });
 </script>
-

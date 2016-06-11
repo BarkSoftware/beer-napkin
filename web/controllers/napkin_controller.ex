@@ -12,7 +12,6 @@ defmodule BeerNapkin.NapkinController do
     token = SecureRandom.urlsafe_base64
     user_napkin_params = Map.merge(napkin_params, %{
       "user_id" => conn.assigns.current_user.id,
-      "token" => token,
       "image_url" => save_image(image, token)
     })
 

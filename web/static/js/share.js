@@ -53,13 +53,13 @@
       form.submit();
     });
 
-    // New napkins aren't shareable until saved
-    if (window.location.href.indexOf("napkins/new") > 0) {
-      button.attr("disabled", "disabled");
+    if ($("#napkin_image_url").val().length) {
+      $("#share-image-container").show();
     }
     else {
-      button.removeAttr("disabled");
-      button.click(share);
+      $("#share-image-container").hide();
     }
+
+    button.click(share);
   }
 })();

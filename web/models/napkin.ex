@@ -26,5 +26,15 @@ defmodule BeerNapkin.Napkin do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> validate_issue_fields
+  end
+
+  defp validate_issue_fields(changeset) do
+    repo_name = get_field(changeset, :repository_full_name)
+    title = get_field(changeset, :issue_title)
+    case {String.length(repo_name || "") > 0, String.length(title || "") > 0} do
+      {true, false} -> add_error(changeset, :issue_title, "Issue title is required.")
+      {_, _} -> changeset
+    end
   end
 end

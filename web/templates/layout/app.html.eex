@@ -82,7 +82,7 @@
             <h4 class="modal-title" id="myModalLabel">Share Napkin</h4>
           </div>
           <div class="modal-body">
-            <div class="col-xs-12">
+            <div id="share-image-container" class="col-xs-12">
               <label>Share image: </label>
               <a id="napkin-image-link" target="_blank" href=""></a>
               <button
@@ -92,8 +92,8 @@
               >
                 <i class="fa fa-copy"></i>
               </button>
+              <div class="col-xs-12"><h4 class="text-center">- or -</h4></div>
             </div>
-            <div class="col-xs-12"><h4 class="text-center">- or -</h4></div>
             <div class="col-xs-12">
               <h3>Share on Github</h3>
               <div class="form-group">
@@ -101,7 +101,7 @@
                 <input id="repository-search" type="text" data-provide="typeahead" class="form-control">
               </div>
               <div class="form-group">
-                <label>Issue Title</label>
+                <label>Issue Title (required)</label>
                 <input id="issue-title" type="text" class="form-control">
               </div>
               <div class="form-group">

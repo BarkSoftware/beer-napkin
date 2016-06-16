@@ -1,6 +1,10 @@
 defmodule Github.Repo do
+  def get(token, repo_full_name) do
+    Github.get(token, "/repos/#{repo_full_name}")
+  end
+
   def get(token, owner, repo) do
-    Github.get(token, "/repos/#{owner}/#{repo}")
+    get(token, "#{owner}/#{repo}")
   end
 end
 
@@ -15,16 +19,21 @@ defmodule Github.Search do
 end
 
 defmodule Github do
-  @base_url "https://api.github.com"
+  @base_url Application.get_env(:beer_napkin, :github_api_url)
+  @http_module Application.get_env(:beer_napkin, :http_module)
 
   def get(token, path) do
-    {:ok, data} = Poison.decode(HTTPoison.get!(@base_url <> path, headers(token)).body)
-    data
+    case @http_module.get(@base_url <> path, headers(token)) do
+      {:ok, response} ->
+        json     = response.body
+        Poison.decode!(json)
+      {:error, _} -> %{}
+    end
   end
 
   def post(token, path, data) do
     {:ok, body} = Poison.encode(data)
-    {:ok, data} = Poison.decode(HTTPoison.post!(@base_url <> path, body, headers(token)).body)
+    {:ok, data} = Poison.decode(@http_module.post!(@base_url <> path, body, headers(token)).body)
     data
   end
 

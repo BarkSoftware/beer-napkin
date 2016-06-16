@@ -40,7 +40,12 @@ defmodule BeerNapkin.AuthController do
   defp user_from_auth auth do
     image = auth.extra.raw_info.user["avatar_url"]
     token = auth.credentials.token
-    params = %{username: auth.info.nickname, email: auth.info.email}
+    email = auth.info.email
+    params = %{username: auth.info.nickname}
+    if email do
+      params = Map.merge(params, %{email: email})
+    end
+
     user = Repo.get_by(User, params)
     if is_nil(user) do
       all_params = Map.put_new(params, :token, token)
@@ -48,7 +53,7 @@ defmodule BeerNapkin.AuthController do
       changeset = User.changeset(%User{}, all_params)
       Repo.insert(changeset)
     else
-      update_params = %{token: token, image: image}
+      update_params = %{token: token, image: image, email: email}
       changeset = User.changeset(user, update_params)
       Repo.update(changeset)
     end

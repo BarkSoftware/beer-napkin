@@ -5,6 +5,7 @@ defmodule BeerNapkin.Napkin do
     field :json, :string
     field :token, :string
     field :image_url, :string
+    field :image_key, :string
     field :issue_title, :string
     field :issue_description, :string
     field :repository_full_name, :string
@@ -14,7 +15,7 @@ defmodule BeerNapkin.Napkin do
     timestamps
   end
 
-  @required_fields ~w(json token user_id image_url)
+  @required_fields ~w(json token user_id image_url image_key)
   @optional_fields ~w(issue_title issue_description repository_full_name issue_url)
 
   @doc """

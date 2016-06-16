@@ -10,8 +10,8 @@ defmodule BeerNapkin.User do
     timestamps
   end
 
-  @required_fields ~w(username email image)
-  @optional_fields ~w(token)
+  @required_fields ~w(username image)
+  @optional_fields ~w(email token)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

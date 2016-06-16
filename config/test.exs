@@ -12,8 +12,10 @@ config :logger, level: :warn
 # Configure your database
 config :beer_napkin, BeerNapkin.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
   database: "beer_napkin_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :beer_napkin,
+  http_module: HTTPMock,
+  github_api_url: "https://api.github.com"

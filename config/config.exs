@@ -19,6 +19,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :beer_napkin,
+  http_module: HTTPoison,
+  github_api_url: "https://api.github.com",
+  s3_host: "https://s3.amazonaws.com",
+  s3_bucket: "beer-napkin"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

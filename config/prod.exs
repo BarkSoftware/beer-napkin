@@ -19,6 +19,17 @@ config :beer_napkin, BeerNapkin.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :beer_napkin, BeerNapkin.Endpoint,
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
+
+# Configure your database
+config :beer_napkin, BeerNapkin.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: System.get_env("DATABASE_USERNAME"),
+  password: System.get_env("DATABASE_PASSWORD"),
+  database: "beer_napkin_prod",
+  pool_size: 20
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
@@ -59,7 +70,3 @@ config :logger, level: :info
 # for the new static assets to be served after a hot upgrade:
 #
 #     config :beer_napkin, BeerNapkin.Endpoint, root: "."
-
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"

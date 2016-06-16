@@ -23,7 +23,7 @@ config :beer_napkin,
   http_module: HTTPoison,
   github_api_url: "https://api.github.com",
   s3_host: "https://s3.amazonaws.com",
-  s3_bucket: "beer-napkin"
+  s3_bucket: System.get_env("S3_BUCKET")
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

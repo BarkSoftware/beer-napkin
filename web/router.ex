@@ -18,6 +18,7 @@ defmodule BeerNapkin.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/ping", PageController, :ping
     resources "/napkins", NapkinController
     resources "/uploads", UploadController
   end

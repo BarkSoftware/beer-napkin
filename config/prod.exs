@@ -20,8 +20,7 @@ config :beer_napkin, BeerNapkin.Endpoint,
 config :logger, level: :info
 
 config :beer_napkin, BeerNapkin.Endpoint,
-  secret_key_base: System.get_env("SECRET_KEY_BASE"),
-  force_ssl: [hsts: true]
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Configure your database
 config :beer_napkin, BeerNapkin.Repo,

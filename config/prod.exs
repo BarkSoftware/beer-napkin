@@ -15,6 +15,7 @@ config :beer_napkin, BeerNapkin.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "beernapkin.com", port: {:system, "PORT"}],
   cache_static_manifest: "priv/static/manifest.json"
+  force_ssl_forwarded_proto: true
 
 # Do not print debug messages in production
 config :logger, level: :info

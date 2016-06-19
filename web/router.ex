@@ -2,6 +2,7 @@ defmodule BeerNapkin.Router do
   use BeerNapkin.Web, :router
 
   pipeline :browser do
+    plug BeerNapkin.ForwardedProtoPlug
     plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_flash

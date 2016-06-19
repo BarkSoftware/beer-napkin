@@ -15,7 +15,6 @@ config :beer_napkin, BeerNapkin.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "beernapkin.com", port: {:system, "PORT"}],
   cache_static_manifest: "priv/static/manifest.json",
-  force_ssl_forwarded_proto: true
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -30,6 +29,11 @@ config :beer_napkin, BeerNapkin.Repo,
   password: System.get_env("DATABASE_PASSWORD"),
   database: "beer_napkin_prod",
   pool_size: 20
+
+config :ueberauth, Ueberauth,
+  providers: [
+    github: {Ueberauth.Strategy.Github, [default_scope: "user,repo", callback_url: "https://www.beernapkin.com/auth/github/callback"]}
+  ]
 
 # ## SSL Support
 #

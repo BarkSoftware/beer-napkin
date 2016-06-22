@@ -38,7 +38,7 @@ defmodule BeerNapkin.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:ueberauth, git: "git@github.com:nicooga/ueberauth.git", override: true}, # https://github.com/ueberauth/ueberauth/pull/22
+     {:ueberauth, git: "git@github.com:brandonjoyce/ueberauth.git", override: true}, # https://github.com/ueberauth/ueberauth/pull/22
      {:ueberauth_github, "~> 0.2"},
      {:ex_aws, "~> 0.4.10"},
      {:httpoison, "~> 0.7"},

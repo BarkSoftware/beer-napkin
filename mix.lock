@@ -37,5 +37,5 @@
   "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.0", "edee20847c42e379bf91261db474ffbe373f8acb56e9079acb6038d4e0bf414f", [:rebar, :make], []},
   "timex": {:hex, :timex, "2.1.4", "17100f0d47473fe05423084039b8f3de9d63617b66d8db676e24a4221216db61", [:mix], [{:tzdata, "~> 0.1.8 or ~> 0.5", [hex: :tzdata, optional: false]}, {:gettext, "~> 0.10", [hex: :gettext, optional: false]}, {:combine, "~> 0.7", [hex: :combine, optional: false]}]},
   "tzdata": {:hex, :tzdata, "0.5.7", "10a4176023c2b294f1bbb98594a646ef25d658ca507b2da20a5952072d6080c4", [:mix], [{:hackney, "~> 1.0", [hex: :hackney, optional: false]}]},
-  "ueberauth": {:git, "git@github.com:nicooga/ueberauth.git", "90b4ac14a91268ad402169a9a3a683e3a967a5ee", []},
+  "ueberauth": {:git, "git@github.com:brandonjoyce/ueberauth.git", "90b4ac14a91268ad402169a9a3a683e3a967a5ee", []},
   "ueberauth_github": {:hex, :ueberauth_github, "0.2.0", "fb999fedd70f9e818c3494bb4bf5f5985ecfb31a25e2c53806d1dd443a37aeb8", [:mix], [{:ueberauth, "~> 0.2", [hex: :ueberauth, optional: false]}, {:oauth2, "~> 0.5", [hex: :oauth2, optional: false]}]}}

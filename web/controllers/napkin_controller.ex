@@ -5,7 +5,7 @@ defmodule BeerNapkin.NapkinController do
 
   def new(conn, _params) do
     changeset = Napkin.changeset(%Napkin{})
-    render conn, "new.html", changeset: changeset
+    render conn, "new.html", changeset: changeset, shareable: true
   end
 
   def create(conn, %{"napkin" => napkin_params, "napkin_image" => image}) do
@@ -33,7 +33,7 @@ defmodule BeerNapkin.NapkinController do
     case load_napkin(conn, id) do
       {:ok, napkin} ->
         changeset = Napkin.changeset(napkin)
-        render(conn, "edit.html", napkin: napkin, changeset: changeset)
+        render(conn, "edit.html", napkin: napkin, changeset: changeset, shareable: shareable?(napkin))
       {:unauthorized, msg} -> unauthorized(conn, msg)
     end
   end
@@ -120,5 +120,9 @@ defmodule BeerNapkin.NapkinController do
 
   defp s3_host do
     Application.get_env(:beer_napkin, :s3_host)
+  end
+
+  defp shareable?(napkin) do
+    String.length(napkin.issue_url || "") == 0
   end
 end

@@ -25,9 +25,7 @@ config :beer_napkin, BeerNapkin.Endpoint,
 # Configure your database
 config :beer_napkin, BeerNapkin.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: System.get_env("DATABASE_USERNAME"),
-  password: System.get_env("DATABASE_PASSWORD"),
-  database: "beer_napkin_prod",
+  url: System.get_env("DATABASE_URL"),
   pool_size: 20
 
 config :ueberauth, Ueberauth,

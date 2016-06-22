@@ -62,6 +62,7 @@
         text: {
           dom: '#button-text',
           callback: _.bind(this.setText, this),
+          transform: beer.util.encodeHtml,
         }
       });
     }

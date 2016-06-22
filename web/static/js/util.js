@@ -10,6 +10,11 @@
 
     createClass: fabric.util.createClass,
 
+    encodeHtml: function(value) {
+      // http://stackoverflow.com/questions/10715801/javascript-decoding-html-entities
+      return $("<textarea/>").html(value).text();
+    },
+
     bindBackspace: function(action) {
       // Prevent the backspace key from navigating back.
       $(document).unbind('keydown').bind('keydown', function (event) {

@@ -69,7 +69,8 @@
       var result = Bind(this.model, {
         text: {
           dom: '#paragraph-text',
-          callback: _.bind(this.setText, this)
+          callback: _.bind(this.setText, this),
+          transform: beer.util.encodeHtml,
         },
         fontWeight: {
           dom: 'input[name="paragraph-font-weight"]',

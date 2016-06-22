@@ -2,8 +2,6 @@ defmodule BeerNapkin.NapkinController do
   use BeerNapkin.Web, :controller
   plug :authenticate
   alias BeerNapkin.Napkin
-  @s3_host Application.get_env(:beer_napkin, :s3_host)
-  @s3_bucket Application.get_env(:beer_napkin, :s3_bucket)
 
   def new(conn, _params) do
     changeset = Napkin.changeset(%Napkin{})
@@ -15,7 +13,7 @@ defmodule BeerNapkin.NapkinController do
     image_key = save_image(image, token)
     user_napkin_params = Map.merge(napkin_params, %{
       "user_id" => conn.assigns.current_user.id,
-      "image_url" => "#{@s3_host}/#{@s3_bucket}/#{image_key}",
+      "image_url" => "#{s3_host}/#{bucket}/#{image_key}",
       "image_key" => image_key
     })
 
@@ -43,7 +41,7 @@ defmodule BeerNapkin.NapkinController do
   def update(conn, %{"id" => id, "napkin" => napkin_params, "napkin_image" => image}) do
     case load_napkin(conn, id) do
       {:ok, napkin} ->
-        update_image(napkin, image, napkin.token)
+        update_image(napkin, image)
         update_params = Map.take(napkin_params, [
           "json", "repository_full_name", "issue_title", "issue_description"
         ])
@@ -87,12 +85,10 @@ defmodule BeerNapkin.NapkinController do
   defp save_image(base64_image, token) do
     normalized = base64_image |> String.split(",") |> List.last
     {:ok, image_data} = Base.decode64(normalized)
-    host = Application.get_env(:beer_napkin, :s3_host)
-    bucket = Application.get_env(:beer_napkin, :s3_bucket)
     BeerNapkin.S3.save_png("#{token}.png", image_data)
   end
 
-  defp update_image(napkin, base64_image, key) do
+  defp update_image(napkin, base64_image) do
     normalized = base64_image |> String.split(",") |> List.last
     {:ok, image_data} = Base.decode64(normalized)
     BeerNapkin.S3.update_png(napkin.image_key, image_data)
@@ -116,5 +112,13 @@ defmodule BeerNapkin.NapkinController do
         napkin_params
       {_title, _url} -> napkin_params
     end
+  end
+
+  defp bucket do
+    Application.get_env(:beer_napkin, :s3_bucket)
+  end
+
+  defp s3_host do
+    Application.get_env(:beer_napkin, :s3_host)
   end
 end

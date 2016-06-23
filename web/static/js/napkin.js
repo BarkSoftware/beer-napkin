@@ -33,10 +33,15 @@
     duplicateActiveObject: function() {
       var canvas = this.canvas;
       var activeObj = canvas.getActiveObject();
-      var object = fabric.util.object.clone(activeObj);
-      object.set('top', object.top + 15);
-      object.set('left', object.left + 15);
-      canvas.add(object);
+      var copyData = activeObj.toObject();
+      fabric.util.enlivenObjects([copyData], function(objects) {
+        objects.forEach(function(o) {
+          o.set('top', o.top + 15);
+          o.set('left', o.left + 15);
+          canvas.add(o);
+        });
+        canvas.renderAll();
+      });
     },
 
     removeActiveObject: function() {
